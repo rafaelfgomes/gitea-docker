@@ -1,0 +1,25 @@
+services:
+  server:
+    image: gitea/gitea:latest
+    container_name: gitea-server
+    environment:
+      - USER_UID=${PUID}
+      - USER_GID=${PGID}
+      - GITEA__database__DB_TYPE=${DB_TYPE}
+      - GITEA__database__HOST=${DB_HOST}
+      - GITEA__database__NAME=${DB_NAME}
+      - GITEA__database__USER=${DB_USER}
+      - GITEA__database__PASSWD=${DB_PASSWD}
+    restart: always
+    volumes:
+      - ./data:/data
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "${WEBUI_PORT:-3000}:3000"
+      - "${SSH_PORT:-2221}:22"
+    networks:
+      - net
+
+networks:
+  net:
+    external: false
