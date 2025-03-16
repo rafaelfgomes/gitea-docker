@@ -16,7 +16,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
     ports:
       - "${WEBUI_PORT:-3000}:3000"
-      - "${SSH_PORT:-2221}:22"
+      - "${SSH_PORT:-22}:22"
     networks:
       - net
 
