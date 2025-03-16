@@ -1,7 +1,7 @@
 services:
-  server:
+  gitea:
     image: gitea/gitea:latest
-    container_name: gitea-server
+    container_name: gitea
     environment:
       - USER_UID=${PUID}
       - USER_GID=${PGID}
